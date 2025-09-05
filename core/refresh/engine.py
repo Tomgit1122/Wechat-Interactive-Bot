@@ -16,10 +16,23 @@ class RefreshEngine:
     
     def _safe_join(self, *paths: str) -> Path:
         """安全路径拼接，防止路径逃逸"""
-        p = (self.base_dir / Path(*paths)).resolve()
-        if not str(p).startswith(str(self.base_dir)):
-            raise PermissionError("path escapes base dir")
-        return p
+        # 确保base_dir是绝对路径
+        base_resolved = self.base_dir.resolve()
+        raw = Path(*paths).expanduser()
+        is_anchored = bool(raw.anchor)
+        if is_anchored:
+            return raw.resolve()
+        # 拼接路径并解析
+        target_path = (base_resolved / Path(*paths)).resolve()
+        
+        # 检查路径安全性（Windows兼容）
+        try:
+            # 使用relative_to方法检查是否在base_dir内
+            target_path.relative_to(base_resolved)
+            return target_path
+        except ValueError:
+            # relative_to失败说明路径逃逸了
+            raise PermissionError(f"path escapes base dir: {target_path} not in {base_resolved}")
     
     def _get_by_dot_path(self, data: Any, path: str) -> Any:
         """支持 a.b[0].c 取值"""
