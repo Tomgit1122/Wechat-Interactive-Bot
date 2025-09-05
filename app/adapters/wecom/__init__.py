@@ -1,0 +1,1 @@
+# wecom adapter package

@@ -1,0 +1,10 @@
+{
+  "items": {
+    "default": {
+      "file": "status.json",
+      "dot_path": null,
+      "enabled": true,
+      "transform": null
+    }
+  }
+}
