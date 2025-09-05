@@ -1,9 +1,10 @@
 {
-  "corp_id": "wwf83966ee8aaf5419",
-  "token": "N9s8Mu4AwuHmqJWyO",
-  "aes_key": "iIqwPHsDeSy8ySM38PgBh3GAz1MdNxWQHhePAdls5xF",
-  "agent_id": 1000002,
+  "corp_id": "",
+  "token": "",
+  "aes_key": "",
+  "agent_id": ,
   "json_base_dir": "./data",
   "default_json_file": "status.json",
   "bot_registry_file": "config/bot_registry.json"
 }
+
