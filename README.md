@@ -73,7 +73,7 @@ python app/main.py
 ```
 
 服务将在 `http://0.0.0.0:5000` 启动。
-
+cloudflared.exe --loglevel info --config config.yml tunnel run d6b627d7-dd5f-4391-abf0-c91d4d58aaab  (后面为cloudflared的ID）
 ### 4. 配置企业微信回调URL
 
 在企业微信管理后台设置回调URL：
@@ -345,5 +345,6 @@ class HttpRefreshEngine(RefreshEngine):
 本项目采用 MIT 许可证。详见 LICENSE 文件。
 
 ---
+
 
 **支持**: 如有问题请在项目仓库提交Issue或联系维护团队。
